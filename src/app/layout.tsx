@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Link from "next/link";
+import GlobalNav from "@/ui/GlobalNav";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,12 +16,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: // content,
+// navbar,
+// modal,
+Readonly<{
   children: React.ReactNode;
+  // content: React.ReactNode;
+  // navbar: React.ReactNode;
+  // modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="p-4">
+        <div>
+          <GlobalNav />
+        </div>
+        <div className="p-4">{children}</div>
+      </body>
     </html>
   );
 }
